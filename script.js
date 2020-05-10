@@ -65,10 +65,10 @@ function render(){
     context.fillRect(0,0,can_size,can_size);
 
     for(let i = 0; i<snake.length; i++){
-        context.fillStyle = i==0?"#fdfdfd":"white";
+        context.fillStyle = i==0?"gray":"white";
         context.fillRect(snake[i].x,snake[i].y,snakeBox,snakeBox);
 
-        context.strokeStle="green";
+        context.strokeStle="yello";
         context.strokeRect(snake[i].x,snake[i].y,snakeBox,snakeBox)
     }
 
