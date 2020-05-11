@@ -8,7 +8,7 @@ const snakeBox = 20;
 const totalMove = can_size/snakeBox;
 
 const apple = new Image();
-apple.src;
+apple.src="/assets/images/apple.png";
 
 let dead = new Audio();
 let eat = new Audio();
@@ -68,10 +68,40 @@ function render(){
         context.fillStyle = i==0?"gray":"white";
         context.fillRect(snake[i].x,snake[i].y,snakeBox,snakeBox);
 
-        context.strokeStle="yello";
-        context.strokeRect(snake[i].x,snake[i].y,snakeBox,snakeBox)
+    context.strokeStle="yello";
+    context.strokeRect(snake[i].x,snake[i].y,snakeBox,snakeBox)
     }
 
-    context.draw
+    context.drawImage(apple,food.x,food.y,snakeBox,snakeBox);
+
+    let snakeX = snake[0].x;
+    let snakeY = snake[0],y;
+    
+    if(direction=="LEFT") snakeX-=snakeBox;
+    if(direction=="RIGHT") snakeX+=snakeBox;
+    if(direction=="UP") snakeY-=snakeBox;
+    if(direction=="DOWN") snakeY+=snakeBox;
+
+
+    // eat food 
+
+    if(snakeX == food.x && snakeY == food.y){
+        score++;
+        getFood();
+    }else{
+        snake.pop();
+    }
+
+    let newHead = {
+        x : snakeX,
+        y : snakeY
+    };
+
+
+    snake.unshift(newHead);
+
+
 }
 render();
+
+var gm = setInterval(render,400);
